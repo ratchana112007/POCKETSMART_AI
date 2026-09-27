@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Planner
+{% endblock %}
+
+{% block content %}
+
+<h1>🏠 Home Planner</h1>
+
+<p class="muted">
+    Create a smart interior and decor plan based on your budget.
+</p>
+
+<form
+    method="post"
+    action="/recommendations/home"
+    class="form-card"
+    data-validate
+>
+
+    <label>Total Budget</label>
+    <input
+        type="number"
+        name="total_budget"
+        step="0.01"
+        min="1"
+        required
+    >
+
+    <label>Room Type</label>
+    <input
+        type="text"
+        name="room_type"
+        placeholder="Bedroom"
+        required
+    >
+
+    <label>Room Size</label>
+    <input
+        type="text"
+        name="room_size"
+        placeholder="12x10 ft"
+        required
+    >
+
+    <label>Preferred Style</label>
+    <input
+        type="text"
+        name="preferred_style"
+        placeholder="Modern"
+        required
+    >
+
+    <label>Color Preference</label>
+    <input
+        type="text"
+        name="color_preference"
+        placeholder="White and Beige"
+        required
+    >
+
+    <label>Number of Items</label>
+    <input
+        type="number"
+        name="number_of_items"
+        min="1"
+        max="100"
+        required
+    >
+
+    <label>Additional Requirements</label>
+    <textarea
+        name="additional_requirements"
+        placeholder="Need space-saving furniture"
+    ></textarea>
+
+    <button type="submit">
+        Generate Recommendation
+    </button>
+
+</form>
+
+{% endblock %}

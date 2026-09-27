@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1"
+    >
+
+    <title>
+        {% block title %}
+        PocketSmart AI
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/styles.css"
+    >
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        class="brand"
+        href="/"
+    >
+        PocketSmart AI
+    </a>
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        {% if user %}
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <form
+            class="inline"
+            method="post"
+            action="/logout"
+        >
+
+            <button
+                class="link-button"
+                type="submit"
+            >
+                Logout
+            </button>
+
+        </form>
+
+        {% else %}
+
+        <a href="/login">
+            Login
+        </a>
+
+        <a
+            class="button small"
+            href="/register"
+        >
+            Register
+        </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<footer>
+
+    © 2026 PocketSmart AI ·
+    Plan smarter, spend thoughtfully.
+
+</footer>
+
+
+<script src="/static/js/app.js?v=2"></script>
+
+</body>
+
+</html>

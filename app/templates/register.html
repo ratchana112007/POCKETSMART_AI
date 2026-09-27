@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h1>
+        Create account
+    </h1>
+
+    {% if error %}
+
+    <div class="alert error">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    <form
+        method="post"
+        action="/register"
+        data-validate
+    >
+
+        <label>
+
+            Name
+
+            <input
+                name="name"
+                minlength="2"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Email
+
+            <input
+                type="email"
+                name="email"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Password
+
+            <input
+                type="password"
+                name="password"
+                minlength="8"
+                required
+            >
+
+        </label>
+
+
+        <button
+            class="button"
+            type="submit"
+        >
+            Register
+        </button>
+
+    </form>
+
+
+    <p>
+
+        Already registered?
+
+        <a href="/login">
+            Login
+        </a>
+
+    </p>
+
+</div>
+
+{% endblock %}

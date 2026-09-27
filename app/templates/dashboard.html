@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    Welcome{% if user %}, {{ user.name }}{% endif %}
+</h1>
+
+<p class="muted">
+    Choose a planner to create a
+    personalized recommendation.
+</p>
+
+
+<div class="grid three">
+
+    <a
+        class="card action"
+        href="/planner/home"
+    >
+
+        <h2>
+            🏠 Home Planner
+        </h2>
+
+        <p>
+            Interior and decor planning.
+        </p>
+
+    </a>
+
+
+    <a
+        class="card action"
+        href="/planner/party"
+    >
+
+        <h2>
+            🎉 Party Planner
+        </h2>
+
+        <p>
+            Events and celebrations.
+        </p>
+
+    </a>
+
+
+    <a
+        class="card action"
+        href="/planner/jewelry"
+    >
+
+        <h2>
+            💎 Jewelry Planner
+        </h2>
+
+        <p>
+            Jewelry purchase planning.
+        </p>
+
+    </a>
+
+</div>
+
+{% endblock %}

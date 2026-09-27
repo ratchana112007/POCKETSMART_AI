@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    Recommendation History
+</h1>
+
+
+{% if not user %}
+
+<div class="alert">
+
+    Please
+
+    <a href="/login">
+        login
+    </a>
+
+    to view your history.
+
+</div>
+
+
+{% elif recommendations %}
+
+
+{% for item in recommendations %}
+
+<article class="card history-item">
+
+    <div class="row">
+
+        <strong>
+            {{ item.planner_type|title }}
+            Planner
+        </strong>
+
+        <span>
+            {{ item.created_at.strftime(
+                "%Y-%m-%d %H:%M"
+            ) }}
+        </span>
+
+    </div>
+
+
+    <pre>
+{{ item.recommendation_text }}
+    </pre>
+
+</article>
+
+{% endfor %}
+
+
+{% else %}
+
+<div class="card">
+
+    <p>
+        No recommendations yet.
+        Start with a planner from
+        your dashboard.
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

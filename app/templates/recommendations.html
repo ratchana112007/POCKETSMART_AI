@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}
+Recommendation
+{% endblock %}
+
+{% block content %}
+
+<h1>✨ Your Smart Recommendation</h1>
+
+<div id="recommendation-result" class="form-card">
+
+    <p>Loading recommendation...</p>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const container =
+        document.getElementById("recommendation-result");
+
+    const saved =
+        sessionStorage.getItem("recommendationResult");
+
+    if (!saved) {
+
+        container.innerHTML = `
+            <p>No recommendation found.</p>
+
+            <a href="/dashboard">
+                Go to Dashboard
+            </a>
+        `;
+
+        return;
+    }
+
+    const result = JSON.parse(saved);
+
+    const recommendation =
+        result.recommendation || "";
+
+    const links =
+        result.shopping_links || [];
+
+    let plannerTitle = "Recommendation";
+    let plannerIcon = "✨";
+
+    if (result.planner_type === "home") {
+        plannerTitle = "Home Recommendation";
+        plannerIcon = "🏠";
+    }
+    else if (result.planner_type === "party") {
+        plannerTitle = "Party Recommendation";
+        plannerIcon = "🎉";
+    }
+    else if (result.planner_type === "jewelry") {
+        plannerTitle = "Jewelry Recommendation";
+        plannerIcon = "💎";
+    }
+
+    container.innerHTML = `
+
+        <h2>
+            ${plannerIcon} ${plannerTitle}
+        </h2>
+
+        <div class="recommendation-text">
+
+            ${recommendation.replace(/\n/g, "<br>")}
+
+        </div>
+
+        <hr>
+
+        <h2>🛒 Shopping Search</h2>
+
+        <div class="shopping-links">
+
+            ${links.map(link => `
+
+                <a
+                    href="${link.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button"
+                >
+                    ${link.name}
+                </a>
+
+            `).join("")}
+
+        </div>
+
+        <br>
+
+        <a
+            href="/dashboard"
+            class="button"
+        >
+            ← Back to Dashboard
+        </a>
+
+    `;
+
+});
+
+</script>
+
+{% endblock %}

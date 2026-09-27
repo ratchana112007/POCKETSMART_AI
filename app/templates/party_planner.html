@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}
+Party Planner
+{% endblock %}
+
+{% block content %}
+
+<div class="form-card wide">
+
+    <h1>
+        Party Planner
+    </h1>
+
+
+    <form
+        method="post"
+        action="/recommendations/party"
+        data-validate
+    >
+
+        <label>
+
+            Total budget
+
+            <input
+                type="number"
+                name="total_budget"
+                min="1"
+                step="0.01"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Party type
+
+            <select
+                name="party_type"
+                required
+            >
+
+                <option>
+                    Birthday
+                </option>
+
+                <option>
+                    Wedding
+                </option>
+
+                <option>
+                    Engagement
+                </option>
+
+                <option>
+                    Anniversary
+                </option>
+
+                <option>
+                    Baby Shower
+                </option>
+
+                <option>
+                    Corporate Event
+                </option>
+
+                <option>
+                    Casual Party
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Number of guests
+
+            <input
+                type="number"
+                name="guests"
+                min="1"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Venue type
+
+            <input
+                name="venue_type"
+                placeholder="Home, hall, restaurant..."
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Theme
+
+            <input
+                name="theme"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Food preference
+
+            <input
+                name="food_preference"
+                placeholder="Vegetarian, mixed, buffet..."
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Decoration preference
+
+            <input
+                name="decoration_preference"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Additional requirements
+
+            <textarea
+                name="additional_requirements"
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="button"
+            type="submit"
+        >
+            Generate Recommendation
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

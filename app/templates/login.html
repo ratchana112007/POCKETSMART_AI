@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h1>
+        Login
+    </h1>
+
+    {% if error %}
+
+    <div class="alert error">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+    <form
+        method="post"
+        action="/login"
+        data-validate
+    >
+
+        <label>
+            Email
+
+            <input
+                type="email"
+                name="email"
+                required
+            >
+
+        </label>
+
+
+        <label>
+            Password
+
+            <input
+                type="password"
+                name="password"
+                required
+            >
+
+        </label>
+
+
+        <button
+            class="button"
+            type="submit"
+        >
+            Login
+        </button>
+
+    </form>
+
+
+    <p>
+        New user?
+
+        <a href="/register">
+            Create an account
+        </a>
+
+    </p>
+
+</div>
+
+{% endblock %}
